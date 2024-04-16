@@ -1,0 +1,183 @@
+<!-- upload.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Intrusion Detection System</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            display: inline-block;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .file-input {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+            width: 70%;
+        }
+        .submit-button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 90%;
+        }
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+        p.message {
+            margin-top: 20px;
+            color: red;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .btn-file {
+            border: 1px solid #ccc;
+            color: #555;
+            padding: 6px 12px;
+            border-radius: 4px;
+            background-color: #ffffffe0;
+            outline: none;
+        }
+        .file-input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            cursor: inherit;
+            display: block;
+        }
+        #file-chosen {
+            margin-left: 5px;
+            font-size: 16px;
+        }
+
+        #upload-label {
+            display: block;
+            margin-bottom: 10px; /* Adjust the margin as needed */
+        }
+        
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Machine Learning Intrusion Detection System</h1>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <div id="upload-label">Upload your file for analysis</div>
+            <label class="file-input-wrapper btn-file">
+                Choose File
+                <input type="file" name="file" id="file-input" class="file-input" required>
+            </label>
+            <span id="file-chosen">No file chosen</span>
+            <button type="submit" class="submit-button">Analyze</button>
+            {% if message %}
+                <p class="message">{{ message }}</p>
+            {% endif %}
+        </form>
+    </div>
+
+    <div class="instruction-box">
+        <h3>How to Prepare Your Network Traffic Data for Analysis</h3>
+        <ol class="instructions-list">
+            <li>Open Wireshark and start capturing network traffic on your desired interface.</li>
+            <li>After capturing the necessary traffic, stop the capture and go to 'File' > 'Export Packet Dissections' > 'As CSV'.</li>
+            <li>Save the .csv file to your local machine.</li>
+            <li>Use the form above to upload your .csv file for analysis.</li>
+        </ol>
+        <p>Please ensure that the .csv file contains the necessary traffic data for accurate IDS prediction.</p>
+    </div>    
+    
+    <style>
+        .instruction-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 150px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .instructions-list {
+            padding-left: 20px;
+            list-style-position: inside;
+        }
+
+        .instructions-list li {
+            margin-bottom: 5px;
+            display: list-item;
+            text-align: -webkit-match-parent;
+        }
+
+    
+        .instruction-box h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+    
+        .instruction-box ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+    
+        .instruction-box ol li {
+            margin-bottom: 5px;
+        }
+    
+        .instruction-box p {
+            margin-top: 10px;
+            color: #666;
+        }
+    </style>
+
+    <script>
+        var fileInput = document.getElementById('file-input');
+        var fileChosen = document.getElementById('file-chosen');
+
+        fileInput.addEventListener('change', function() {
+            fileChosen.textContent = this.files[0].name;
+        });
+    </script>
+</body>
+</html>
+
