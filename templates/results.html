@@ -123,9 +123,9 @@
     <div class="container">
         <a href="/" class="upload-button">Upload another file</a>
         <h1>Intrusion Detection Result</h1>
-        <div class="{{ 'no-anomaly' if anomaly_detected == 'No Anomaly Detected' else 'Anomaly Detected' }}">
-                {{ anomaly_detected }}
-            </div>
+        <div class="{{ 'no-anomaly' if anomaly_detected == 'No Anomaly Detected' else 'anomaly' }}">
+            {{ anomaly_detected }}
+        </div>        
         <div>
             <canvas id="predictionChart" width="200" height="200"></canvas>
         </div>
